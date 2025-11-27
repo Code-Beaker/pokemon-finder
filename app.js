@@ -1,6 +1,8 @@
 const searchInput = document.getElementById("pokemonInput");
 const searchButton = document.getElementById("search-btn");
 const pokemonSpriteElement = document.querySelector("#pokemon-sprite");
+const pokemonTitleFetch = document.querySelector("#pokemon-name");
+const pokemonHeight = document.querySelector("#pokemon-height");
 
 searchButton.addEventListener("click", fetchData);
 
@@ -21,6 +23,8 @@ async function fetchData() {
     const pokemonSprite = data.sprites.front_default;
     pokemonSpriteElement.src = pokemonSprite;
     pokemonSpriteElement.classList.remove("d-none");
+    pokemonTitleFetch.textContent = data.name;
+    pokemonHeight.textContent = `Height: ${data.height}`;
   } catch (error) {
     console.error(error);
     alert(error);
